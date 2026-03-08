@@ -1,0 +1,9 @@
+com/taller/SecondaryController.class
+com/taller/util/DbTest.class
+com/taller/util/Database.class
+module-info.class
+com/taller/App.class
+com/taller/PrimaryController.class
+com/taller/dao/ClienteDao.class
+com/taller/ClienteTest.class
+com/taller/model/Cliente.class
