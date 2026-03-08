@@ -1,7 +1,7 @@
 # Taller Gestión Java
 Aplicación desarrollada en Java para la gestión de clientes en un taller mecánico.
 
-# Tecnlogías utilizadas
+# Tecnologías utilizadas
 - Java
 - Maven
 - MySQL
