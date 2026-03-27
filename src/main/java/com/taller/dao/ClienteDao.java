@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
+
 
 /**
  *
@@ -129,6 +131,29 @@ public class ClienteDao {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public List<Cliente> obtenerClientes() {
+        List<Cliente> lista = new ArrayList<>();
+        
+        String sql = "SELECT * FROM clientes";
+        
+        try (Connection conn = Database.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery()) {
+            
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                   c.setDni(rs.getString("dni"));
+                   c.setNombre(rs.getString("nombre"));
+                   c.setTelefono(rs.getString("telefono"));
+                   c.setEmail(rs.getString("email"));
+                   
+                   lista.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } return lista;
     }
         }
         
