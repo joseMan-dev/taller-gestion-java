@@ -6,13 +6,27 @@
 <VBox spacing="10" alignment="CENTER" xmlns="http//javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.taller.CochesController">
       
     <Label text="Gestión de Coches"/>
+    <Button text="Volver" onAction="#volverAClientes" layoutX="20" layoutY="10" />
     
+    <!-- FORMULARIO -->
+    <TextField fx:id="txtMatricula" promptText="Matricula" />
+    <TextField fx:id="txtMarca" promptText="Marca" />
+    <TextField fx:id="txtModelo" promptText="Modelo" />
+    <TextField fx:id="txtAnio" promptText="Año" />
+    
+    <ComboBox fx:id="comboClientes" promptText="Selecciona cliente" />
+    
+    <Button text="Guardar Coche" onAction="#guardarCoche" />
+    
+    <!-- Tabla -->
     <TableView fx:id="tablaCoches" prefWidth="500">
         <columns>
-            <TableColumn fx:id="colMatricula" text="Matrícula"/>
-            <TableColumn fx:id="colMarca" text="Marca"/>
-            <TableColumn fx:id="colModelo" text="Modelo"/>
-            <TableColumn fx:id="colAnio" text="Año"/>
+            <TableColumn fx:id="colMatricula" text="Matricula" />
+            <TableColumn fx:id="colMarca" text="Marca" />
+            <TableColumn fx:id="colModelo" text="Modelo" />
+            <TableColumn fx:id="colAnio" text="Año" />
+            <TableColumn fx:id="colCliente" text="Cliente" />
+            <TableColumn fx:id="colDni" text="DIN" />
         </columns>
     </TableView>
 

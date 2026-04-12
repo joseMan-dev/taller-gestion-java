@@ -4,6 +4,7 @@
  */
 package com.taller.dao;
 import com.taller.model.Revision;
+import com.taller.model.Coche;
 import com.taller.util.Database;
 import java.sql.Connection;
 import java.sql.Date;
@@ -42,29 +43,45 @@ public class RevisionDao {
     
     public List<Revision> listarRevisiones() {
         List<Revision> revisiones = new ArrayList<>();
-        String sql = "SELECT * FROM revisiones";
+        String sql = "SELECT r.*, c.matricula, cl.nombre AS cliente_nombre " +
+                "FROM revisiones r  " +
+                 "JOIN coches c ON r.coche_id = c.id " +
+                "JOIN clientes cl ON c.cliente_id = cl.id";
         
         try (Connection conn = Database.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery()) {
             
         while (rs.next()) {
-            Revision revision = new Revision(
-            rs.getInt("id"),
-            rs.getInt("coche_id"),
-            rs.getDate("fecha").toLocalDate(),
-            rs.getInt("km"),
-            rs.getString("observaciones"),
-            rs.getDouble("coste_total")
-            );
+            Revision r = new Revision();
+            r.setId(rs.getInt("id"));
+            r.setFecha(rs.getDate("fecha").toLocalDate());
+            r.setKm(rs.getInt("km"));
             
-            revisiones.add(revision);
+            Coche coche = new Coche ();
+            coche.setId(rs.getInt("coche_id"));
+            coche.setMatricula(rs.getString("matricula"));
+            coche.setCliente(rs.getString("cliente_nombre"));
+            
+            r.setCoche(coche);
+            
+            revisiones.add(r);
         }
-        } catch (SQLException e) {
-            System.out.println("Error al listar revisiones: " + e.getMessage());
+        } catch (Exception e) {
+        e.printStackTrace();
         }
         return revisiones;
     }
+            
+
+                   
+                    
+            
+            
+            
+           
+            
+       
     
     public List<Revision> buscarPorCocheId(int cocheId) {
         List<Revision> revisiones = new ArrayList<>();

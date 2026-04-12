@@ -11,6 +11,8 @@ package com.taller.model;
 public class Coche {
     
     private int id;
+    private String cliente;
+    private String dni;
     private int clienteId;
     private String matricula;
     private String marca;
@@ -35,6 +37,7 @@ public Coche(int clienteId, String matricula, String marca, String modelo, int a
 
 //Constructor con Id
 public Coche (int id, int clienteId, String matricula, String marca, String modelo, int anio) {
+     this.id = id;
      this.clienteId = clienteId;
      this.matricula = matricula;
      this.marca = marca;
@@ -62,7 +65,7 @@ public String getMatricula() {
        return matricula;
 }
 
-public void setMtricula(String matricula) {
+public void setMatricula(String matricula) {
        this.matricula = matricula;
 }
 
@@ -90,15 +93,24 @@ public void setAnio(int anio) {
        this.anio = anio;
 }
 
+public String getCliente() {
+    return cliente;
+}
+
+public void setCliente(String cliente) {
+    this.cliente = cliente;
+}
+
+public String getDni() {
+    return dni;
+}
+
+public void setDni(String dni) {
+    this.dni = dni;
+}
+
 @Override
 public String toString() {
-    return "Coche{" +
-           "id=" + id +
-           ", clienteId=" + clienteId +
-           ", matricula=" + matricula + '\'' +
-           ", marca=" + marca + '\'' +
-           ", modelo=" + modelo + '\'' +
-           ", anio=" + anio  +
-           '}';
+    return matricula + " - " + marca + " - " + modelo;
 }
 }

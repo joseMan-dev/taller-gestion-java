@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taller.RevisionesController">
+   
+    <Button text="Volver" onAction="#volverAClientes"/> 
+    
+    <Label text="Gestión de Revisiones"/>
+    
+    <ComboBox fx:id="comboCoches" promptText="Selecciona un coche"/>
+    <TextField fx:id="txtFecha" promptText="Fecha"/>
+    <TextField fx:id="txtKm" promptText="Kilómetros"/>
+    
+    <Button text="Guardar Revisión" onAction="#guardarRevision"/>
+    
+    <TableView fx:id="tablaRevisiones" prefHeight="200" prefWidth="500">
+    <columns>
+        <TableColumn fx:id="colId" text="ID"/>
+        <TableColumn fx:id="colCoche" text="Coche"/>
+        <TableColumn fx:id="colFecha" text="Fecha"/>
+        <TableColumn fx:id="colKm" text="KM"/>
+        
+    </columns>
+    </TableView>
+    
+</VBox>

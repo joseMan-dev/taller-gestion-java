@@ -17,6 +17,7 @@ public class Revision {
     private int km;
     private String observaciones;
     private double costeTotal;
+    private Coche coche;
     
     public Revision() {
         
@@ -85,6 +86,21 @@ public class Revision {
     
     public void setCosteTotal(double costeTotal) {
         this.costeTotal = costeTotal;
+    }
+    
+    public  Coche getCoche() {
+        return coche;
+    }
+    
+    public void setCoche( Coche coche) {
+        this.coche = coche;
+    }
+    
+    public String getCocheInfo() {
+        if (coche != null) {
+            return coche.getMatricula() + " - " + coche.getCliente();
+        }
+        return "";
     }
     
     @Override

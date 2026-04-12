@@ -41,7 +41,11 @@ public class CocheDao {
     public List<Coche> listarCoches() {
         List<Coche> coches = new ArrayList<>();
         
-        String sql = "SELECT * FROM coches";
+        String sql = "SELECT c.*, cl.nombre AS cliente_nombre, cl.dni AS cliente_dni  " +
+                "FROM coches c " +
+                "LEFT JOIN clientes cl ON c.cliente_id = cl.id";
+               
+                
         
         try (Connection conn = Database.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -56,6 +60,8 @@ public class CocheDao {
                     rs.getString("modelo"),
                     rs.getInt("anio")
                             );
+                coche.setCliente(rs.getString("cliente_nombre"));
+                coche.setDni(rs.getString("cliente_dni"));
                 coches.add(coche);
             }
         } catch (SQLException e) {

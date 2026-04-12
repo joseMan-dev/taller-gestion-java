@@ -24,6 +24,9 @@
     
         <Button text="Guardar Cliente" onAction="#guardarCliente"/>
         <Button text="Ver Coches" onAction="#irACoches"/>
+        <Button text="Ver Revisiones" onAction="#abrirRevisiones"/>
+        <Button text="Eliminar Cliente" onAction="#eliminarClienteSeleccionado" />
+        
     
         <TableView fx:id="tablaClientes" prefHeight="200.0" prefWidth="400.0">
            <columns>
